@@ -9,7 +9,7 @@
     
 - **Wazuh (SIEM)** - ตั้งอยู่ที่เครื่อง On-premise อยู่หลัง pfSense ทำหน้าที่เป็นตัว monitor log
     
-- **Google Cloud Platform (GCP):** จำลองเป็นเป้าหมาย รัน Ubuntu + Mosquitto (MQTT Broker)
+- **Google Cloud Platform (GCP)** - จำลองเป็นเป้าหมาย รัน Ubuntu + Mosquitto (MQTT Broker)
     
 - **Tailscale** - ทำ VPN Tunnel เชื่อมเครื่องบ้านกับ cloud ให้คุยกันได้
     
@@ -46,18 +46,18 @@
 
 - **Wazuh ส่งเข้า Discord ไม่ได้ (Exit status 7)**
     
-    - **ปัญหา - ตอนแรกใช้ integration ชื่อ `slack` ใน `ossec.conf` แล้วเปลี่ยน URL เป็น Discord แต่มันพัง
+    - **ปัญหา** - ตอนแรกใช้ integration ชื่อ `slack` ใน `ossec.conf` แล้วเปลี่ยน URL เป็น Discord แต่มันพัง
         
-    - **วิธีแก้ -  Discord ไม่รองรับ Format ของ Slack เลยต้องเขียน Python สคริปต์ขึ้นมาเอง (`custom-discord`) แล้วใช้ request ยิงเข้า Discord แบบตรงๆ
+    - **วิธีแก้** -  Discord ไม่รองรับ Format ของ Slack เลยต้องเขียน Python สคริปต์ขึ้นมาเอง (`custom-discord`) แล้วใช้ request ยิงเข้า Discord แบบตรงๆ
         
 - **Wazuh start ไม่ได้หลังเพิ่ม rule**
     
-    - **ปัญหา - พอเพิ่ม Rule จับ MQTT ไปแล้ว restart พังเลย เช็ค log เจอว่า `Invalid decoder name: 'syslog'`
+    - **ปัญหา** - พอเพิ่ม Rule จับ MQTT ไปแล้ว restart พังเลย เช็ค log เจอว่า `Invalid decoder name: 'syslog'`
         
-    - **วิธีแก้ - Log ของ Mosquitto มันเป็นแค่ตัวเลข Timestamp ไม่ใช่ Syslog ปกติ เลยต้องไปสร้าง Custom Decoder ให้มันดักคำว่า `not authorised`
+    - **วิธีแก้** - Log ของ Mosquitto มันเป็นแค่ตัวเลข Timestamp ไม่ใช่ Syslog ปกติ เลยต้องไปสร้าง Custom Decoder ให้มันดักคำว่า `not authorised`
         
 - **Discord ไม่แจ้งเตือนและ DNS ไม่ทำงาน**
     
-    - **ปัญหา - Alert เด้งในหน้า Dashboard แล้ว แต่ใน Discord ไม่แจ้งเตือน จึงเช็ค log เจอ `Name or service not known`
+    - **ปัญหา** - Alert เด้งในหน้า Dashboard แล้ว แต่ใน Discord ไม่แจ้งเตือน จึงเช็ค log เจอ `Name or service not known`
         
-    - **วิธีแก้ - เครื่องตื่นจากโหมด Sleep แล้ว Network/DNS รวน ทำให้ Wazuh ที่อยู่ใน Chroot Jail ออกเน็ตไปหาเว็บไม่ได้ ต้องใส่ DNS เข้าไปตรงๆด้วยคำสั่ง  `echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf` แล้ว restart wazuh Manager ถึงจะหาย
+    - **วิธีแก้** - เครื่องตื่นจากโหมด Sleep แล้ว Network/DNS รวน ทำให้ Wazuh ที่อยู่ใน Chroot Jail ออกเน็ตไปหาเว็บไม่ได้ ต้องใส่ DNS เข้าไปตรงๆด้วยคำสั่ง  `echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf` แล้ว restart wazuh Manager ถึงจะหาย
