@@ -5,24 +5,24 @@
 
 ## Tech Stack
 
-- **pfSense - (Firewall/Router) ประจำ Home Lab ทำหน้าที่จัดการ Routing และคัดกรอง traffic ทั้งหมดก่อนเข้ามาถึงวง network ในบ้าน
+- **pfSense** - (Firewall/Router) ประจำ Home Lab ทำหน้าที่จัดการ Routing และคัดกรอง traffic ทั้งหมดก่อนเข้ามาถึงวง network ในบ้าน
     
-- **Wazuh (SIEM): - ตั้งอยู่ที่เครื่อง On-premise อยู่หลัง pfSense ทำหน้าที่เป็นตัว monitor log
+- **Wazuh (SIEM)** - ตั้งอยู่ที่เครื่อง On-premise อยู่หลัง pfSense ทำหน้าที่เป็นตัว monitor log
     
 - **Google Cloud Platform (GCP):** จำลองเป็นเป้าหมาย รัน Ubuntu + Mosquitto (MQTT Broker)
     
-- **Tailscale: - ทำ VPN Tunnel เชื่อมเครื่องบ้านกับ cloud ให้คุยกันได้
+- **Tailscale** - ทำ VPN Tunnel เชื่อมเครื่องบ้านกับ cloud ให้คุยกันได้
     
-- **Python 3 & Discord Webhook - เขียนสคริปต์ดึง Log ยิงแจ้งเตือนเข้า Discord
+- **Python 3 & Discord Webhook** - เขียนสคริปต์ดึง Log ยิงแจ้งเตือนเข้า Discord
     
 
 ## ฟีเจอร์หลัก
 
-1. **Detect SSH Brute-force - ตรวจจับคนเดารหัสผ่านเข้าเครื่องเป้าหมาย
+1. **Detect SSH Brute-force** - ตรวจจับคนเดารหัสผ่านเข้าเครื่องเป้าหมาย
     
-2. **Detect MQTT Brute-force: - เขียน Custom Decoder ดักจับคนพยายามเจาะเข้า Mosquitto Broker
+2. **Detect MQTT Brute-force** - เขียน Custom Decoder ดักจับคนพยายามเจาะเข้า Mosquitto Broker
     
-3. **Real-time Alert:** ตั้ง Rule Level 12 (Critical) โดยให้แจ้งเตือนเข้า Discord ทันที
+3. **Real-time Alert** ตั้ง Rule Level 12 (Critical) โดยให้แจ้งเตือนเข้า Discord ทันที
     
 
 ## โครงสร้างการทำงาน (Architecture)
