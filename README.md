@@ -1,8 +1,7 @@
 ### Hybrid Cloud SIEM - Wazuh + MQTT + Discord
 
-	โปรเจคนี้ทำขึ้นมาเพื่อศึกษาการทำงานสาย Blue Team / SOC โดยมี concept หลักๆ คือการจำลองระบบรักษาความปลอดภัยแบบ Hybrid Cloud โดยตั้ง SIEM ไว้ที่คอมบ้าน แล้วเชื่อมไป monitor เซิร์ฟเวอร์เป้าหมายที่รันอยู่บน Google Cloud
-
-เป้าหมายคือถ้ามีแฮกเกอร์พยายามจะเจาะระบบ ไม่ว่าจะเป็นทาง SSH หรือพยายามเจาะเข้า IoT Broker (MQTT) ระบบต้องตรวจจับได้ และส่งแจ้งเตือนเข้า Discord ของเราแบบ Real-time
+	
+โปรเจคนี้ทำขึ้นมาเพื่อศึกษาการทำงานสาย Blue Team / SOC โดยมี concept หลักๆ คือการจำลองระบบรักษาความปลอดภัยแบบ Hybrid Cloud โดยตั้ง SIEM ไว้ที่คอมบ้าน แล้วเชื่อมไป monitor เซิร์ฟเวอร์เป้าหมายที่รันอยู่บน Google Cloud โดยเป้าหมายคือถ้ามีแฮกเกอร์พยายามจะเจาะระบบ ไม่ว่าจะเป็นทาง SSH หรือพยายามเจาะเข้า IoT Broker (MQTT) ระบบต้องตรวจจับได้ และส่งแจ้งเตือนเข้า Discord ของเราแบบ Real-time
 
 ## Tech Stack
 
@@ -12,7 +11,7 @@
     
 - **Google Cloud Platform (GCP):** จำลองเป็นเป้าหมาย รัน Ubuntu + Mosquitto (MQTT Broker)
     
-- **Tailscale: - ทำ VPN Tunnel เชื่อมเครื่องบ้านกับคลาวด์ให้คุยกันได้
+- **Tailscale: - ทำ VPN Tunnel เชื่อมเครื่องบ้านกับ cloud ให้คุยกันได้
     
 - **Python 3 & Discord Webhook - เขียนสคริปต์ดึง Log ยิงแจ้งเตือนเข้า Discord
     
@@ -28,7 +27,7 @@
 
 ## โครงสร้างการทำงาน (Architecture)
 
-1. **Home Lab Network:** มี **pfSense** เป็น Firewall คุมประตูทางเข้า-ออกของเน็ตเวิร์กบ้าน คอยปกป้องเครื่อง Wazuh Manager ที่อยู่ข้างใน
+1. **Home Lab Network:** มี **pfSense** เป็น Firewall คุมประตูทางเข้า-ออกของเน็ตเวิร์กบ้าน คอยป้องกันเครื่อง Wazuh Manager ที่อยู่ข้างใน
     
 2. ติดตั้ง **Wazuh Agent** ไว้ที่เครื่องเป้าหมายบน GCP
     
